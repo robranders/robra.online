@@ -19,6 +19,7 @@ class App extends React.Component {
 				{title: "Data", field: "uuid", hidden: false},
 			],
 			tableRows: [],
+			appErr: "",
 		};
 	}
 
@@ -30,6 +31,11 @@ class App extends React.Component {
 			})
 			.catch((err) => {
 				console.log({err});
+				this.setState({
+					appErr: JSON.stringify({
+						msg: err.message,
+					}),
+				});
 			});
 	}
 
@@ -42,6 +48,7 @@ class App extends React.Component {
 					</Toolbar>
 				</AppBar>
 				<MaterialTable title="Simulation Data" columns={this.state.tableColumns} data={this.state.tableRows} />
+				<span>{this.state.appErr}</span>
 			</>
 		);
 	}
