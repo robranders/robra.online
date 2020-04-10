@@ -24,7 +24,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch("https://84.198.0.232:22750/api")
+		fetch("/api")
 			.then((res) => res.json())
 			.then((res) => {
 				this.setState({tableRows: res});
